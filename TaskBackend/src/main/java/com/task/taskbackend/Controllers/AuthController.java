@@ -17,23 +17,22 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class AuthController {
 
     private  final AuthService authService;
-    private JwtUtil jwtUtil;
+    private final  JwtUtil jwtUtil;
     private  final UserRepository userRepository;
     private  final AuthenticationManager authenticationManager;
     private  final UserService userService;
+
 
 
 
@@ -51,7 +50,7 @@ public class AuthController {
 
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("USER NOT CREATED"); }
 
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
 
 
 
@@ -62,7 +61,7 @@ public class AuthController {
 
         try {
 
-         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),authenticationRequest.getPassword()));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),authenticationRequest.getPassword()));
 
 
         }catch (BadCredentialsException e){

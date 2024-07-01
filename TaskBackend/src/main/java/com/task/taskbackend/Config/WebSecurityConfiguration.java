@@ -31,10 +31,10 @@ public class WebSecurityConfiguration {
     private  final UserService userService;
 
 
-@Bean
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-    http
+        http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req->
                         req.requestMatchers(
@@ -60,7 +60,7 @@ public class WebSecurityConfiguration {
 
     public PasswordEncoder passwordEncoder(){
 
-    return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
 
 
@@ -75,7 +75,7 @@ public class WebSecurityConfiguration {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception{
 
-    return  config.getAuthenticationManager();
+        return  config.getAuthenticationManager();
     }
 
 }

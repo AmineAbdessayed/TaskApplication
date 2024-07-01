@@ -6,4 +6,4 @@ import com.task.taskbackend.dto.UserDto;
 public interface AuthService {
 
       UserDto SignUpUser(SignUpRequest signUpRequest);
-      Boolean hasUserWithEmail(String Email);
+      Boolean hasUserWithEmail(String Email); }

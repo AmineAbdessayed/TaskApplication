@@ -23,7 +23,7 @@ public class AuthServiceImpl implements  AuthService{
     @PostConstruct
     public void createAdminAccount(){
 
-      Optional<User> Opuser= userRepository.findByUserRole(UserRole.ADMIN);
+        Optional<User> Opuser= userRepository.findByUserRole(UserRole.ADMIN);
 
         if(Opuser.isEmpty()){
 
@@ -51,7 +51,7 @@ public class AuthServiceImpl implements  AuthService{
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(new BCryptPasswordEncoder().encode(signUpRequest.getPassword()));
         user.setUserRole(UserRole.EMPLOYEE);
-       User CreatedUser= userRepository.save(user);
+        User CreatedUser= userRepository.save(user);
 
         return CreatedUser.getUserDto();
     }
@@ -60,4 +60,3 @@ public class AuthServiceImpl implements  AuthService{
         return  userRepository.findFirstByEmail(Email).isPresent();
     }
 }
-

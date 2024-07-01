@@ -39,7 +39,7 @@ public class User  implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "";
+        return password;
     }
 
     @Override
@@ -78,4 +78,6 @@ public class User  implements UserDetails {
         return  userDto;
 
     }
+
+
 }
